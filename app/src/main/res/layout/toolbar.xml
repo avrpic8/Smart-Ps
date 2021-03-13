@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:elevation="@dimen/standard_margin">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txt_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="Smart PS"
+            android:layout_marginLeft="@dimen/medium_margin"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/txt_bt_status"
+            android:layout_width="@dimen/_85sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/medium_margin"
+            android:gravity="center"
+            android:text="connected"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/ubuntu_mono_bold"
+            android:background="@drawable/txt_bt_background"/>
+
+    </RelativeLayout>
+
+
+</androidx.appcompat.widget.Toolbar>

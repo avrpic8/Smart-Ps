@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Smart Ps</string>
+
+    <string name="edit_text_hint"><font size="12">set current (A)</font></string>
+</resources>

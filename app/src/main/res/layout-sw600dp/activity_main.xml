@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layout_panels"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/v_gLine_panel"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/voltage_layout"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_margin="@dimen/medium_margin"
+            android:layout_weight="1"
+            app:cardElevation="@dimen/standard_margin"
+            app:cardPreventCornerOverlap="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txt_bat_voltage_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/lcd_font"
+                    android:text="00.0"
+                    android:textColor="@color/fbutton_color_emerald"
+                    android:textSize="@dimen/_45sdp" />
+
+                <TextView
+                    android:id="@+id/txt_bat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:text="Voltage"
+                    android:textColor="@color/fbutton_color_midnight_blue"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold|italic"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/txt_bat"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/small_margin"
+                    android:text="V"
+                    android:textColor="@color/fbutton_color_midnight_blue"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/current_layout"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/medium_margin"
+            android:layout_weight="1"
+            app:cardElevation="@dimen/standard_margin"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="false">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txt_bat_current_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/lcd_font"
+                    android:text="00.0"
+                    android:textColor="@color/fbutton_color_sun_flower"
+                    android:textSize="@dimen/_45sdp" />
+
+                <TextView
+                    android:id="@+id/txt_current"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:text="Current"
+                    android:textColor="@color/fbutton_color_midnight_blue"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold|italic"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/txt_current"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/small_margin"
+                    android:text="A"
+                    android:textColor="@color/fbutton_color_midnight_blue"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/power_layout"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/medium_margin"
+            android:layout_weight="1"
+            app:cardElevation="@dimen/standard_margin"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="false">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txt_power_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/lcd_font"
+                    android:text="000"
+                    android:textColor="@color/fbutton_color_alizarin"
+                    android:textSize="@dimen/_45sdp" />
+
+                <TextView
+                    android:id="@+id/txt_power"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/small_margin"
+                    android:text="Power"
+                    android:textColor="@color/fbutton_color_midnight_blue"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold|italic"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/txt_power"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/small_margin"
+                    android:text="W"
+                    android:textColor="@color/fbutton_color_midnight_blue"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_gLine_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <eo.view.batterymeter.BatteryMeterView
+        android:id="@+id/battery_view"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_160sdp"
+        app:batteryMeterChargeLevel="60"
+        app:batteryMeterChargingColor="#4caf50"
+        app:batteryMeterColor="#0277bd"
+        app:batteryMeterCriticalChargeLevel="20"
+        app:batteryMeterCriticalColor="#d84315"
+        app:batteryMeterIndicatorColor="@android:color/transparent"
+        app:batteryMeterIsCharging="true"
+        app:batteryMeterTheme="rounded"
+        app:batteryMeterUnknownColor="#e0e0e0"
+        app:layout_constraintLeft_toRightOf="@+id/v_gLine_battery"
+        app:layout_constraintTop_toBottomOf="@id/h_gLine_battery" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lcd_font"
+        android:text="State of charge"
+        android:textColor="@color/fbutton_color_midnight_blue"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="@id/battery_view"
+        app:layout_constraintStart_toStartOf="@id/battery_view"
+        app:layout_constraintTop_toBottomOf="@id/battery_view"
+        android:layout_marginTop="@dimen/_5sdp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_gLine_battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.38" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_gLine_battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_gLine_settings_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.56" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layout_temp_time_panel"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        app:cardElevation="@dimen/standard_margin"
+        app:cardUseCompatPadding="false"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_control_panel"
+        app:layout_constraintRight_toRightOf="@id/btn_control_panel">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_5sdp"
+                app:srcCompat="@drawable/ic_thermometer" />
+
+            <TextView
+                android:id="@+id/txt_temp_value"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:text="--°C"
+                android:textColor="@color/fbutton_color_green_sea"
+                android:textSize="@dimen/_20sdp"
+                android:gravity="center"
+                android:fontFamily="@font/alien_bold"/>
+
+            <View
+                android:id="@+id/line_seprator"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:background="@color/fbutton_color_asbestos" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_5sdp"
+                app:srcCompat="@drawable/ic_stopwatch" />
+
+            <TextView
+                android:id="@+id/txt_time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:text="--:--"
+                android:textColor="@color/fbutton_color_peter_river"
+                android:textSize="@dimen/_20sdp"
+                android:fontFamily="@font/alien_bold"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/settings_panel"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_110sdp"
+        app:cardElevation="@dimen/_5sdp"
+        app:layout_constraintRight_toRightOf="@id/btn_control_panel"
+        app:layout_constraintLeft_toLeftOf="@id/btn_control_panel"
+        app:layout_constraintTop_toBottomOf="@id/layout_temp_time_panel"
+        app:layout_constraintBottom_toTopOf="@id/btn_control_panel">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioGroup
+                android:id="@+id/battery_types"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/small_margin"
+                android:checkedButton="@id/ion_type"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@drawable/spinner_background">
+
+                <RadioButton
+                    android:id="@+id/sla_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SLA" />
+
+                <RadioButton
+                    android:id="@+id/ion_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Li-ion" />
+
+                <RadioButton
+                    android:id="@+id/nm_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ni-MH" />
+
+                <RadioButton
+                    android:id="@+id/cd_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ni-CD" />
+
+            </RadioGroup>
+
+            <Spinner
+                android:id="@+id/cell_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:layout_marginLeft="@dimen/medium_margin"
+                android:layout_marginRight="@dimen/medium_margin"
+                app:layout_constraintLeft_toRightOf="@id/battery_types"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/spinner_background"/>
+
+            <EditText
+                android:id="@+id/edt_current"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/cell_info"
+                app:layout_constraintStart_toStartOf="@+id/cell_info"
+                app:layout_constraintTop_toBottomOf="@id/cell_info"
+                android:layout_marginTop="@dimen/small_margin"
+                android:padding="@dimen/_2sdp"
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:hint="@string/edit_text_hint"
+                android:maxLength="3"
+                android:inputType="numberDecimal"
+                android:background="@drawable/spinner_background"/>
+
+            <RadioGroup
+                android:id="@+id/rg_charge_methods"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                android:checkedButton="@id/rg_normal_charge"
+                app:layout_constraintTop_toBottomOf="@+id/edt_current"
+                app:layout_constraintStart_toStartOf="@id/edt_current"
+                app:layout_constraintEnd_toEndOf="@id/edt_current"
+                android:layout_marginTop="@dimen/medium_margin">
+
+                <RadioButton
+                    android:id="@+id/rg_normal_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Normal" />
+
+                <RadioButton
+                    android:id="@+id/rg_fast_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fast" />
+
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_control_panel"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_50sdp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/v_gLine_settings_panel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginRight="@dimen/medium_margin"
+        android:layout_marginLeft="@dimen/big_margin"
+        android:layout_marginBottom="@dimen/medium_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/standard_margin"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:background="@drawable/button_start"
+                android:enabled="true"
+                android:text="START" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_stop"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:background="@drawable/button_stop"
+                android:text="STOP"
+                android:enabled="false" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
